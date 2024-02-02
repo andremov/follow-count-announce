@@ -13,6 +13,8 @@ export default function LoadSearchParamCode() {
   const code = searchParams.get("code");
 
   useEffect(() => {
+    console.log({ code, instagramClientId, instagramClientSecret });
+
     if (code && instagramClientId && instagramClientSecret) {
       console.log({ code });
 
