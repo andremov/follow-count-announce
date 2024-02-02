@@ -8,8 +8,8 @@ export const env = createEnv({
    */
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
-    instagramClientId: z.string(),
-    instagramRedirectUri: z.string(),
+    // instagramClientId: z.string(),
+    // instagramRedirectUri: z.string(),
   },
 
   /**
