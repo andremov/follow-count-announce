@@ -1,15 +1,26 @@
-import Link from "next/link";
+"use client";
 
-export default async function Home() {
-  const { instagramClientId, instagramRedirectUri } = process.env;
+import { useSearchParams } from "next/navigation";
+import InstagramLogin from "./_components/instagram-login";
+import FollowerCount from "./_components/follower-count";
+import { useEffect } from "react";
+import { findUser } from "~/api";
+
+export default function Home() {
+  const searchParams = useSearchParams();
+
+  const code = searchParams.get("code");
+
+  useEffect(() => {
+    if (code) {
+      void findUser(code);
+    }
+  }, [code]);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <Link
-        href={`https://api.instagram.com/oauth/authorize?client_id=${instagramClientId}&redirect_uri=${instagramRedirectUri}&scope=user_profile,user_media&response_type=code`}
-      >
-        Log in
-      </Link>
+      {!code && <InstagramLogin />}
+      {code && <FollowerCount />}
     </main>
   );
 }
