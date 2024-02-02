@@ -4,26 +4,37 @@ import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { findUser } from "~/api";
 import { useFollowStore } from "~/store/followStore";
+import { env } from "~/env";
 
 export default function LoadSearchParamCode() {
-  const { instagramClientId, instagramClientSecret } = process.env;
+  const {
+    NEXT_PUBLIC_INSTAGRAM_CLIENT_ID,
+    NEXT_PUBLIC_INSTAGRAM_CLIENT_SECRET,
+  } = env;
+
   const { setAuthCode } = useFollowStore();
   const searchParams = useSearchParams();
 
   const code = searchParams.get("code");
 
   useEffect(() => {
-    console.log({ code, instagramClientId, instagramClientSecret });
+    console.log({
+      code,
+    });
 
-    if (code && instagramClientId && instagramClientSecret) {
+    if (code) {
       console.log({ code });
 
-      void findUser(code, instagramClientId, instagramClientSecret);
+      void findUser(
+        code,
+        NEXT_PUBLIC_INSTAGRAM_CLIENT_ID,
+        NEXT_PUBLIC_INSTAGRAM_CLIENT_SECRET,
+      );
     }
 
     setAuthCode(code ?? undefined);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [code, instagramClientId, instagramClientSecret]);
+  }, [code]);
 
   return <div></div>;
 }
