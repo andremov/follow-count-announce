@@ -6,10 +6,14 @@ const API = axios.create({
   responseType: "json",
 });
 
-export function findUser(code: string) {
+export function findUser(
+  code: string,
+  instagramClientId: string,
+  instagramClientSecret: string,
+) {
   const formData = new FormData();
-  formData.append("client_id", process.env.instagramClientId!);
-  formData.append("client_secret", process.env.instagramClientSecret!);
+  formData.append("client_id", instagramClientId);
+  formData.append("client_secret", instagramClientSecret);
   formData.append("grant_type", "authorization_code");
   formData.append("redirect_uri", "https://follow-count-announce.vercel.app/");
   formData.append("code", code);
