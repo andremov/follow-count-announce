@@ -1,5 +1,5 @@
 "use client";
 
 export default function FollowerCount() {
-  return <div>Lol.</div>;
+  return <div>Follower count.</div>;
 }

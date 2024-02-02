@@ -7,7 +7,7 @@ const API = axios.create({
 });
 
 export function findUser(code: string) {
-  return API.get(`oauth/access_token/`, {
+  return API.post(`oauth/access_token/`, {
     params: {
       client_id: process.env.instagramClientId,
       client_secret: process.env.instagramClientSecret,
