@@ -26,12 +26,12 @@ export default function LoadSearchParamCode() {
     if (code) {
       console.log({ code });
 
-      // void findUser(
-      //   code,
-      //   NEXT_PUBLIC_INSTAGRAM_CLIENT_ID,
-      //   NEXT_PUBLIC_INSTAGRAM_CLIENT_SECRET,
-      //   NEXT_PUBLIC_INSTAGRAM_REDIRECT_URI,
-      // );
+      void findUser(
+        code,
+        NEXT_PUBLIC_INSTAGRAM_CLIENT_ID,
+        NEXT_PUBLIC_INSTAGRAM_CLIENT_SECRET,
+        NEXT_PUBLIC_INSTAGRAM_REDIRECT_URI,
+      );
     }
 
     setAuthCode(code ?? undefined);
