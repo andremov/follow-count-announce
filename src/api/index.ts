@@ -10,12 +10,13 @@ export function findUser(
   code: string,
   instagramClientId: string,
   instagramClientSecret: string,
+  instagramClientRedirectUri: string,
 ) {
   const formData = new FormData();
   formData.append("client_id", instagramClientId);
   formData.append("client_secret", instagramClientSecret);
   formData.append("grant_type", "authorization_code");
-  formData.append("redirect_uri", "https://follow-count-announce.vercel.app/");
+  formData.append("redirect_uri", instagramClientRedirectUri);
   formData.append("code", code);
 
   return API.post(`oauth/access_token/`, formData).then(
