@@ -20,7 +20,7 @@ export function findUser(
   formData.append("code", code);
   console.log("local!");
 
-  return API.post(`api`, formData).then(
+  return API.post(`get-oauth`, formData).then(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-return
     (r): any => r.data,
   );
