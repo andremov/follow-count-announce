@@ -10,12 +10,18 @@ const API = axios.create({
 
 export async function POST(request: Request) {
   const formData = await request.formData();
+  console.log({ formData });
+
   const data = await API.post<{ access_token: string; user_id: number }>(
     `oauth/access_token/`,
     formData,
   )
-    .then((r) => r.data)
-    .catch((e) => console.log(e));
+    .then((r) => {
+      console.log({ data: r.data });
+
+      return r.data;
+    })
+    .catch((e) => console.log({ e }));
 
   return Response.json(data);
 }
