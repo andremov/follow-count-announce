@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://api.instagram.com/",
+  baseURL: "localhost:3000/",
   timeout: 15000,
   responseType: "json",
 });
@@ -18,8 +18,9 @@ export function findUser(
   formData.append("grant_type", "authorization_code");
   formData.append("redirect_uri", instagramClientRedirectUri);
   formData.append("code", code);
+  console.log("local!");
 
-  return API.post(`oauth/access_token/`, formData).then(
+  return API.post(`api`, formData).then(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-return
     (r): any => r.data,
   );
