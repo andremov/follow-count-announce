@@ -31,4 +31,4 @@ export function POST(request: Request) {
   );
 }
 
-export default API;
+export default POST;
