@@ -18,7 +18,6 @@ export function findUser(
   formData.append("grant_type", "authorization_code");
   formData.append("redirect_uri", instagramClientRedirectUri);
   formData.append("code", code);
-  console.log("local!");
 
   return API.post(`get-oauth`, formData).then(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-return
