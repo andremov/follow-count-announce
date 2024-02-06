@@ -11,9 +11,23 @@ export const createGeneralSlice: StateCreator<
   [],
   GeneralSlice
 > = (set) => ({
-  authCode: undefined,
-  authCodeResolved: false,
-  setAuthCode: (code: string | undefined) => {
-    set({ authCode: code, authCodeResolved: true });
+  shortLivedToken: undefined,
+  shortLivedTokenResolved: false,
+  
+  longLivedToken: undefined,
+  longLivedTokenResolved: false,
+
+  userID: undefined,
+
+  setShortLivedToken: (code: string | undefined) => {
+    set({ shortLivedToken: code, shortLivedTokenResolved: true });
   },
+
+  setLongLivedToken: (code: string | undefined) => {
+    set({ longLivedToken: code, longLivedTokenResolved: true });
+  },
+
+  setUserID: (newId: number | undefined) => {
+    set({ userID: newId });
+  }
 });

@@ -1,8 +1,13 @@
 export type GeneralState = {
-  authCode: string | undefined;
-  authCodeResolved: boolean;
+  shortLivedToken: string | undefined;
+  shortLivedTokenResolved: boolean;
+  longLivedToken: string | undefined;
+  longLivedTokenResolved: boolean;
+  userID: number | undefined;
 };
 
 export type GeneralSlice = GeneralState & {
-  setAuthCode: (code: string | undefined) => void;
+  setShortLivedToken: (code: string | undefined) => void;
+  setLongLivedToken: (code: string | undefined) => void;
+  setUserID: (newId: number | undefined) => void;
 };
