@@ -12,17 +12,13 @@ export function getUserAccessToken(
   instagramClientSecret: string,
   instagramClientRedirectUri: string,
 ) {
-  const formData = new FormData();
-  formData.append("user_id", instagramClientId);
-  formData.append("client_secret", instagramClientSecret);
-  formData.append("grant_type", "authorization_code");
-  formData.append("redirect_uri", instagramClientRedirectUri);
-  formData.append("code", code);
-
-  return API.post<{ access_token: string; user_id: number }>(
-    `get-oauth`,
-    formData,
-  ).then((r) => r.data);
+  return API.post<{ access_token: string; user_id: number }>(`get-oauth`, {
+    user_id: instagramClientId,
+    client_secret: instagramClientSecret,
+    grant_type: "authorization_code",
+    redirect_uri: instagramClientRedirectUri,
+    code: code,
+  }).then((r) => r.data);
 }
 
 export function getUserNode(user_id: number, access_token: string) {

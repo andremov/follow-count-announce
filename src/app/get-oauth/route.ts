@@ -9,20 +9,21 @@ const API = axios.create({
 });
 
 export async function POST(request: Request) {
-  const formData = await request.formData();
-  console.log({ formData });
+  const body = request.body;
 
   const data = await API.post<{ access_token: string; user_id: number }>(
     `oauth/access_token/`,
-    formData,
+    body,
   )
     .then((r) => {
       console.log({ data: r.data });
 
       return r.data;
     })
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    .catch((e) => console.log({ e }));
+    .catch((e) => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      console.log({ e });
+    });
 
-  return Response.json(data);
+  return Response.json(data ?? {});
 }
