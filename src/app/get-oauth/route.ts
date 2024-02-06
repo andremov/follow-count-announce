@@ -25,9 +25,10 @@ export async function POST(request: Request) {
   const formData = await request.formData();
   console.log(formData);
 
-  // eslint-disable-next-line @typescript-eslint/unbound-method
-  return API.post(`oauth/access_token/`, formData).then(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-return
-    (r): any => r.data,
-  );
+  const data = await API.post<{ code: string }>(
+    `oauth/access_token/`,
+    formData,
+  ).then((r) => r.data);
+
+  return Response.json(data);
 }
