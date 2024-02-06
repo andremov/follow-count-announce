@@ -19,7 +19,7 @@ export const useFollowStore = createWithEqualityFn<StoreState>()(
       }),
       {
         name: "followStore",
-        partialize: (state) => ({}),
+        partialize: (_state) => ({}),
         storage: createJSONStorage(() => localStorage),
       },
     ),

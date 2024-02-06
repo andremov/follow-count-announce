@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "localhost:3000/",
+  baseURL: "https://follow-count-announce.vercel.app/",
   timeout: 15000,
   responseType: "json",
 });
