@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect } from "react";
 import { useFollowStore } from "~/store/followStore";
 import { getUserNode } from "~/api";
