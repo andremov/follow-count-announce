@@ -21,7 +21,7 @@ const API = axios.create({
   responseType: "json",
 });
 
-export function POST(request: Request) {
+export async function POST(request: Request) {
   console.log(request.formData());
   console.log("server?");
   // eslint-disable-next-line @typescript-eslint/unbound-method
@@ -30,5 +30,3 @@ export function POST(request: Request) {
     (r): any => r.data,
   );
 }
-
-export default POST;
