@@ -21,6 +21,7 @@ export async function POST(request: Request) {
 
       return r.data;
     })
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     .catch((e) => console.log({ e }));
 
   return Response.json(data);
