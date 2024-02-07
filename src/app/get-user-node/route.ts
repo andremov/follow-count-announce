@@ -8,7 +8,7 @@ const API = axios.create({
   responseType: "json",
 });
 
-export async function GET(request: Request) {
+export async function POST(request: Request) {
   const formData = await request.formData();
 
   const user_id = formData.get("user_id") as string;
