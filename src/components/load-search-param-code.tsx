@@ -13,7 +13,8 @@ export default function LoadSearchParamCode() {
     NEXT_PUBLIC_INSTAGRAM_REDIRECT_URI,
   } = env;
 
-  const { setShortLivedToken, setLongLivedToken, setUserID } = useFollowStore();
+  const { setShortLivedToken, setLongLivedToken, setUserID, userID } =
+    useFollowStore();
   const searchParams = useSearchParams();
 
   const code = searchParams.get("code");
@@ -31,8 +32,6 @@ export default function LoadSearchParamCode() {
         setLongLivedToken(access_token);
         setUserID(user_id);
         console.log({ access_token, user_id });
-
-        redirect("/live-followers");
       }
     }
 
@@ -41,6 +40,11 @@ export default function LoadSearchParamCode() {
     setShortLivedToken(code ?? undefined);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [code]);
+
+  if (userID) {
+    redirect("/live-followers");
+    return <></>;
+  }
 
   return <div></div>;
 }
