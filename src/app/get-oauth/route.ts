@@ -22,10 +22,19 @@ export async function POST(request: Request) {
 
       return r.data;
     })
-    .catch((e: Error) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      console.log({ message: e.message });
-    });
+    .catch(
+      (
+        e: Error & { error_type: string; code: string; error_message: string },
+      ) => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        console.log({
+          message: e.message,
+          error_type: e.error_type,
+          code: e.code,
+          error_message: e.error_message,
+        });
+      },
+    );
 
   return Response.json(data ?? {});
 }
