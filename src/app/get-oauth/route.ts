@@ -18,13 +18,13 @@ export async function POST(request: Request) {
     formData,
   )
     .then((r) => {
-      console.log({ data: r.data });
+      console.log({ r });
 
       return r.data;
     })
-    .catch((e) => {
+    .catch((e: Error) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      console.log({ e });
+      console.log({ message: e.message });
     });
 
   return Response.json(data ?? {});
