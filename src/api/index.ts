@@ -13,7 +13,7 @@ export function getUserAccessToken(
   instagramClientRedirectUri: string,
 ) {
   const formData = new FormData();
-  formData.append("user_id", instagramClientId);
+  formData.append("client_id", instagramClientId);
   formData.append("client_secret", instagramClientSecret);
   formData.append("grant_type", "authorization_code");
   formData.append("redirect_uri", instagramClientRedirectUri);
