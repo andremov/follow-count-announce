@@ -34,9 +34,7 @@ export function getUserNode(user_id: number, access_token: string) {
     id: number;
     username: string;
     followers_count: number;
-  }>(`get-user-node`, {
-    params: formData,
-  }).then((r) => r.data);
+  }>(`get-user-node`, formData).then((r) => r.data);
 }
 
 export default API;
