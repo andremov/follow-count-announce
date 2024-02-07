@@ -9,11 +9,19 @@ const API = axios.create({
 });
 
 export async function POST(request: Request) {
-  const body = request.body;
+  // const { user_id, client_secret, grant_type, redirect_uri, code } = request.body// as Record<string, string>;
+
+  // const formData = new FormData();
+  // formData.append("user_id", user_id);
+  // formData.append("client_secret", client_secret);
+  // formData.append("grant_type", grant_type);
+  // formData.append("redirect_uri", redirect_uri);
+  // formData.append("code", code);
+  console.log({ body: request.body });
 
   const data = await API.post<{ access_token: string; user_id: number }>(
     `oauth/access_token/`,
-    body,
+    request.body,
   )
     .then((r) => {
       console.log({ data: r.data });
