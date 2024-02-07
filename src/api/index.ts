@@ -30,10 +30,13 @@ export function getUserNode(user_id: number, access_token: string) {
   formData.append("user_id", `${user_id}`);
   formData.append("access_token", access_token);
 
-  return API.post<{ access_token: string; user_id: number }>(
-    `get-user-node`,
-    formData,
-  ).then((r) => r.data);
+  return API.post<{
+    id: number;
+    username: string;
+    followers_count: number;
+  }>(`get-user-node`, {
+    params: formData,
+  }).then((r) => r.data);
 }
 
 export default API;

@@ -11,12 +11,16 @@ const API = axios.create({
 export async function POST(request: Request) {
   const formData = await request.formData();
 
-  const user_id = formData.get("user_id") as string;
+  // const user_id = formData.get("user_id") as string;
   const access_token = formData.get("access_token") as string;
 
-  const data = await API.post<{ access_token: string; user_id: number }>(
-    `${user_id}?fields=id,username&access_token=${access_token}`,
-  ).then((r) => r.data);
+  const data = await API.get<{
+    id: number;
+    username: string;
+    followers_count: number;
+  }>(`me?fields=id,username,followers_count&access_token=${access_token}`).then(
+    (r) => r.data,
+  );
 
   return Response.json(data);
 }
