@@ -27,8 +27,11 @@ export default function LoadSearchParamCode() {
           NEXT_PUBLIC_INSTAGRAM_CLIENT_SECRET,
           NEXT_PUBLIC_INSTAGRAM_REDIRECT_URI,
         );
+
         setLongLivedToken(access_token);
         setUserID(user_id);
+        console.log({ access_token, user_id });
+
         redirect("/live-followers");
       }
     }
